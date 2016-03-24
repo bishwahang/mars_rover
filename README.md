@@ -6,7 +6,7 @@ Welcome to your new gem! In this directory, you'll find the files you need to be
 Install bundle gem and run bundle install in working directory.
 
 ```ruby
-gem install 'bundle' && bundle install
+gem install bundle && bundle
 ```
 Build and install the gem.
 
@@ -15,12 +15,12 @@ rake install
 ```
 
 ## Usage
-After the installation simply run the program with:
+After the installation simply run the program with command:
 
 ```ruby
 marsrover
 ```
-This programs moves the mars rover according to given instruction.
+The program will read the input from **STDIN** and moves the mars rover according to given instruction string.
 
 First line of input should be top right co-ordinate of mars map.
 
@@ -52,8 +52,6 @@ For an example:
     5 1 E
 
 
-The program will read the input from STDIN.
-
 Get the help message with:
 
 ```ruby
@@ -68,7 +66,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mars_rover. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/bishwahng/mars_rover. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
