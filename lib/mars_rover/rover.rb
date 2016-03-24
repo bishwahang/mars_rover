@@ -1,13 +1,46 @@
 module MarsRover
   class Rover
+    MOVE_DELTAS  = {"N" => [0,1], "E" => [1,0], "W" => [-1,0], "S" => [0,-1]}
+    ROTATE_LEFT  = {"N" => "W", "E"   => "N", "W"   => "S", "S"    => "E"}
+    ROTATE_RIGHT = {"N" => "E", "E"   => "S", "W"   => "N", "S"    => "W"}
     attr_reader :instructions
-    def initialize(current_postion:, instructions:)
-      @current_position = current_postion
-      @instructions = instructions
+    attr_accessor :current_position
+
+    Position = Struct.new(:x, :y, :direction)
+
+    def initialize(x:, y:, direction:, instructions:)
+      @current_position = Position.new(x,y,direction)
+      @instructions = instructions.chars
     end
 
     def execute!
-      # puts "Executed"
+      instructions.each do |ins|
+        case ins
+        when "M"
+          move_forward
+        when "R"
+          rotate_right
+        when "L"
+          rotate_left
+        else
+          raise "invalid move"
+        end
+      end
+      "#{current_position.x} #{current_position.y} #{current_position.direction}"
+    end
+
+    private
+    def move_forward
+      current_position.x += MOVE_DELTAS[current_position.direction][0]
+      current_position.y += MOVE_DELTAS[current_position.direction][1]
+    end
+
+    def rotate_left
+      current_position.direction = ROTATE_LEFT[current_position.direction]
+    end
+
+    def rotate_right
+      current_position.direction = ROTATE_RIGHT[current_position.direction]
     end
   end
 end

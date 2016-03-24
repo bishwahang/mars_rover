@@ -13,7 +13,7 @@ class MarsRoverTest < Minitest::Test
       console.puts "LMLMLMLMM"
       console.puts "3 3 E"
       console.puts "MMRMMRMRRM"
-      assert_output("1 2 N\n5 1 E\n",nil) {MarsRover.run}
+      assert_output("1 3 N\n5 1 E\n",nil) {MarsRover.run}
     end
   end
 

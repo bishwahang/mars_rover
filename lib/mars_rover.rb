@@ -12,8 +12,8 @@ module MarsRover
     test_cases.times do
       current_postion = gets.chomp.split
       instructions = gets.chomp
-      rover = Rover.new(current_postion: current_postion, instructions: instructions)
-      rover.execute!
+      rover = MarsRover::Rover.new(x: current_postion[0].to_i, y: current_postion[1].to_i, direction: current_postion[2], instructions: instructions)
+      puts rover.execute!
     end
   end
 end
