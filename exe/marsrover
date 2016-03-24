@@ -1,0 +1,62 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+require 'ostruct'
+require 'optparse'
+require_relative '../lib/mars_rover'
+
+# module to parse args
+module OptParser
+  def self.parse(args)
+    options    = OpenStruct.new
+    opt_parser = OptionParser.new do |opts|
+      opts.separator ""
+      opts.separator "Common options:"
+      # No argument, shows at tail.  This will print an options summary.
+      # Try it and see!
+      # Another typical switch to print the version.
+      opts.on_tail("-h","--help", "Show this message") do
+        puts opts
+        puts "-" * 30
+        puts <<~heredoc
+        This programs moves the mars rover according to given instruction.
+        First line of input should be top right co-ordinate of mars map.
+        The bottom left is always assumed to be (0,0).
+        The second line should be the number of mars rover (test case) to be expected.
+        The second line is followed by the current postion of mars rover and the move instructions.
+        Allowed moves are:
+        R : Turns the direction of rover to right
+        L : Turns the direction of rover to left
+        M : Moves the rover one unit to current direction
+        For an example:
+            Test Input:
+            5 5 # 
+            2
+            1 2 N # start position of rover 1
+            LMLMLMLMM # moves instructions for rover 1
+            3 3 E # start postion of rover 2
+            MMRMMRMRRM # move instructions for rover 2
+            Expected Output:
+            1 3 N
+            5 1 E
+        heredoc
+        exit
+      end
+      opts.on_tail("-v","--version", "Show version") do
+        puts MarsRover::VERSION
+        exit
+      end
+    end
+    opt_parser.parse!(args)
+    options
+  end
+end
+
+options       = OptParser.parse(ARGV)
+reqd_args = %w()
+class ChildMissingArgument < OptionParser::MissingArgument
+  puts "\nFor help: marsrover -h\n\n"
+  exit
+end
+raise ChildMissingArgument if reqd_args.any? {|e| options[e].nil?}
+puts options
