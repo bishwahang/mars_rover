@@ -23,7 +23,7 @@ module MarsRover
         when "L"
           rotate_left
         else
-          raise "invalid move"
+          raise "invalid instruction"
         end
       end
       "#{current_position.x} #{current_position.y} #{current_position.direction}"

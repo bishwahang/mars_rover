@@ -13,7 +13,18 @@ class MarsRoverTest < Minitest::Test
       console.puts "LMLMLMLMM"
       console.puts "3 3 E"
       console.puts "MMRMMRMRRM"
-      assert_output("1 3 N\n5 1 E\n",nil) {MarsRover.run}
+      assert_output("1 3 N\n5 1 E\n",nil) { MarsRover.run }
+    end
+  end
+
+  def test_that_it_raises_invalid_instruction
+    with_stdin do |console|
+      console.puts "5 5"
+      console.puts "1"
+      console.puts "1 2 N"
+      console.puts "Q"
+      exception = assert_raises(Exception) { MarsRover.run}
+      assert_equal("invalid instruction", exception.message)
     end
   end
 
