@@ -1,5 +1,7 @@
 require_relative "mars_rover/version"
 
 module MarsRover
-  # Your code goes here...
+  def self.run
+    puts "hello world"
+  end
 end
