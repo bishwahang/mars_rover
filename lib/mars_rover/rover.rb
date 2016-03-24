@@ -33,6 +33,7 @@ module MarsRover
     def move_forward
       current_position.x += MOVE_DELTAS[current_position.direction][0]
       current_position.y += MOVE_DELTAS[current_position.direction][1]
+      raise "invalid move" if MarsRover::Map.check_invalid? current_position
     end
 
     def rotate_left
