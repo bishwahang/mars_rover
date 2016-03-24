@@ -20,6 +20,10 @@ After the installation simply run the program with command:
 ```ruby
 marsrover
 ```
+or you can execute the file directly:
+```ruby
+ruby ./lib/mars_rover.rb
+```
 The program will read the input from **STDIN** and moves the mars rover according to given instruction string.
 
 First line of input should be top right co-ordinate of mars map.
