@@ -5,10 +5,10 @@ require_relative "mars_rover/rover"
 module MarsRover
   def self.run
     max_x, max_y = gets.chomp.split
-    Map.max_x = max_x.to_i
-    Map.max_y = max_y.to_i
-    test_cases = gets.chomp.to_i
-    results = []
+    Map.max_x    = max_x.to_i
+    Map.max_y    = max_y.to_i
+    test_cases   = gets.chomp.to_i
+    results      = []
 
     test_cases.times do
       current_postion = gets.chomp.split

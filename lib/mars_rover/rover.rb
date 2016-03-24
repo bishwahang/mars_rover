@@ -1,8 +1,8 @@
 module MarsRover
   class Rover
     MOVE_DELTAS  = {"N" => [0,1], "E" => [1,0], "W" => [-1,0], "S" => [0,-1]}
-    ROTATE_LEFT  = {"N" => "W", "E"   => "N", "W"   => "S", "S"    => "E"}
-    ROTATE_RIGHT = {"N" => "E", "E"   => "S", "W"   => "N", "S"    => "W"}
+    ROTATE_LEFT  = {"N" => "W", "E" => "N", "W" => "S", "S" => "E"}
+    ROTATE_RIGHT = {"N" => "E", "E" => "S", "W" => "N", "S" => "W"}
     attr_reader :instructions
     attr_accessor :current_position
 
