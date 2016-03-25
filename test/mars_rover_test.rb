@@ -23,8 +23,8 @@ class MarsRoverTest < Minitest::Test
       console.puts "1"
       console.puts "1 2 N"
       console.puts "Q"
-      exception = assert_raises(Exception) { MarsRover.run}
-      assert_equal("invalid instruction", exception.message)
+      exception = assert_raises(Exception) { MarsRover.run }
+      assert_match(/invalid instruction/, exception.message)
     end
   end
 
@@ -34,16 +34,16 @@ class MarsRoverTest < Minitest::Test
       console.puts "1"
       console.puts "0 0 E"
       console.puts "MMM"
-      exception = assert_raises(Exception) { MarsRover.run}
-      assert_equal("invalid move", exception.message)
+      exception = assert_raises(Exception) { MarsRover.run }
+      assert_match(/invalid move/, exception.message)
     end
     with_stdin do |console|
       console.puts "2 2"
       console.puts "1"
       console.puts "0 0 W"
       console.puts "M"
-      exception = assert_raises(Exception) { MarsRover.run}
-      assert_equal("invalid move", exception.message)
+      exception = assert_raises(Exception) { MarsRover.run }
+      assert_match(/invalid move/, exception.message)
     end
   end
 
