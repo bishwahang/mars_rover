@@ -3,18 +3,18 @@ module MarsRover
     MOVE_DELTAS  = {"N" => [0,1], "E" => [1,0], "W" => [-1,0], "S" => [0,-1]}
     ROTATE_LEFT  = {"N" => "W", "E" => "N", "W" => "S", "S" => "E"}
     ROTATE_RIGHT = {"N" => "E", "E" => "S", "W" => "N", "S" => "W"}
-    attr_reader :instructions
-    attr_accessor :current_position
+
+    attr_reader :current_position, :instructions
 
     Position = Struct.new(:x, :y, :direction)
 
     def initialize(x:, y:, direction:, instructions:)
       @current_position = Position.new(x,y,direction)
-      @instructions = instructions.chars
+      @instructions = instructions
     end
 
     def execute!
-      instructions.each do |ins|
+      instructions.chars.each do |ins|
         case ins
         when "M"
           move_forward
@@ -31,17 +31,17 @@ module MarsRover
 
     private
     def move_forward
-      current_position.x += MOVE_DELTAS[current_position.direction][0]
-      current_position.y += MOVE_DELTAS[current_position.direction][1]
+      @current_position.x += MOVE_DELTAS[current_position.direction][0]
+      @current_position.y += MOVE_DELTAS[current_position.direction][1]
       raise "invalid move: out of map boundary" if MarsRover::Map.check_invalid? current_position
     end
 
     def rotate_left
-      current_position.direction = ROTATE_LEFT[current_position.direction]
+      @current_position.direction = ROTATE_LEFT[current_position.direction]
     end
 
     def rotate_right
-      current_position.direction = ROTATE_RIGHT[current_position.direction]
+      @current_position.direction = ROTATE_RIGHT[current_position.direction]
     end
   end
 end
