@@ -24,6 +24,7 @@ The intergration test of fully working program is in **test/mars_rover_test.rb**
 To experiment with that code, run `bin/console` for an interactive prompt.
 
 ## Installation
+This program was built with **Ruby 2.3**.  
 Install bundle gem and run bundle install in working directory.
 
 ```ruby
