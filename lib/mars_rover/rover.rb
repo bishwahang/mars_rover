@@ -4,7 +4,7 @@ module MarsRover
     ROTATE_LEFT  = {"N" => "W", "E" => "N", "W" => "S", "S" => "E"}
     ROTATE_RIGHT = {"N" => "E", "E" => "S", "W" => "N", "S" => "W"}
 
-    attr_reader :current_position, :instructions
+    attr_reader :instructions
 
     Position = Struct.new(:x, :y, :direction)
 
@@ -29,9 +29,15 @@ module MarsRover
       "#{current_position.x} #{current_position.y} #{current_position.direction}"
     end
 
+    def x; current_position.x; end
+
+    def y; current_position.y; end
+
+    def direction; current_position.direction; end
+
     private
 
-    attr_writer :current_position
+    attr_accessor :current_position
 
     def move_forward
       current_position.x += MOVE_DELTAS[current_position.direction][0]
