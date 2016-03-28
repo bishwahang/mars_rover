@@ -30,18 +30,21 @@ module MarsRover
     end
 
     private
+
+    attr_writer :current_position
+
     def move_forward
-      @current_position.x += MOVE_DELTAS[current_position.direction][0]
-      @current_position.y += MOVE_DELTAS[current_position.direction][1]
+      current_position.x += MOVE_DELTAS[current_position.direction][0]
+      current_position.y += MOVE_DELTAS[current_position.direction][1]
       raise "invalid move: out of map boundary" if MarsRover::Map.check_invalid? current_position
     end
 
     def rotate_left
-      @current_position.direction = ROTATE_LEFT[current_position.direction]
+      current_position.direction = ROTATE_LEFT[current_position.direction]
     end
 
     def rotate_right
-      @current_position.direction = ROTATE_RIGHT[current_position.direction]
+      current_position.direction = ROTATE_RIGHT[current_position.direction]
     end
   end
 end
