@@ -6,8 +6,3 @@ Rake::TestTask.new(:test) do |t|
   t.libs << "lib"
   t.test_files = FileList['test/**/*_test.rb']
 end
-
-desc "foo task"
-task :foo do
-  puts "task foo"
-end
