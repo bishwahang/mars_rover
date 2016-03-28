@@ -21,18 +21,18 @@ class MapTest < Minitest::Test
       position.expect :x, 9
       position.expect :y, 10
       assert_equal true, MarsRover::Map.check_invalid?(position)
-      # 'true' when 'x' is smallers than 0
+      # 'true' when 'x' is smaller than 0
       position.expect :x, -1
       position.expect :y, 0
       position.expect :x, -1
       assert_equal true, MarsRover::Map.check_invalid?(position)
-      # 'true' when 'y' is smallers than 0
+      # 'true' when 'y' is smaller than 0
       position.expect :x, 0
       position.expect :y, -1
       position.expect :x, 0
       position.expect :y, -1
       assert_equal true, MarsRover::Map.check_invalid?(position)
-      # 'false' when x and y are withing the map
+      # 'false' when x and y are within the map
       position.expect :x, 5
       position.expect :y, 5
       position.expect :x, 5
